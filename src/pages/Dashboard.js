@@ -27,6 +27,7 @@ function Dashboard() {
               setData(result?.text);
               const a = document.createElement("a");
               a.href = result?.text;
+              a.target = "_blank";
               a.click();
             }
 
