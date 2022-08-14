@@ -25,7 +25,9 @@ function Dashboard() {
           onResult={(result, error) => {
             if (!!result) {
               setData(result?.text);
-              window.location.href = result?.text;
+              const a = document.createElement("a");
+              a.href = result?.text;
+              a.click();
             }
 
             if (!!error) {
@@ -33,7 +35,6 @@ function Dashboard() {
             }
           }}
         />
-        <p>{data}</p>
       </div>
     </div>
   );
