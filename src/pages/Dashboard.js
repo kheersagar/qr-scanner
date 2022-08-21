@@ -23,12 +23,12 @@ function Dashboard() {
     <div className="dashboard-cont">
       <h1>Scan QR</h1>
       <div className="qr-cont">
-        {!data && (
+        {isScanning && (
           <QrReader
             style={previewStyle}
             constraints={{ facingMode: "environment" }}
             onResult={(result, error) => {
-              if (!!result) {
+              if (!!result && isScanning) {
                 setData(result?.text);
                 setIsScanning(false);
                 const a = document.createElement("a");
@@ -46,6 +46,9 @@ function Dashboard() {
       </div>
       <div>{isScanning ? "Scanning..." : "error"}</div>
       <div>{data}</div>
+      <div>
+        <button onClick={() => setIsScanning(false)}>Scan</button>
+      </div>
     </div>
   );
 }
