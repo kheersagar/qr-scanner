@@ -27,10 +27,10 @@ function Dashboard() {
             if (!!result) {
               setData(result?.text);
               setIsScanning(false);
-              // const a = document.createElement("a");
-              // a.href = result?.text;
-              // a.target = "_blank";
-              // a.click();
+              const a = document.createElement("a");
+              a.href = result?.text;
+              a.target = "_blank";
+              a.click();
             }
 
             if (!!error) {
