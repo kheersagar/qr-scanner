@@ -1,7 +1,11 @@
 import axios from "axios";
+import { ticketActions } from "../store/TicketSlice";
 
 const API = axios.create({
-  baseURL: "https://sih11.herokuapp.com/",
+  baseURL:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:8000"
+      : "https://sih11.herokuapp.com/",
 });
 
 API.interceptors.request.use((req) => {
@@ -15,6 +19,17 @@ export const LoginHandle = (data, navigation) => {
       const res = await API.post("/api/signin", data);
       localStorage.setItem("/auth/info", JSON.stringify(res.data));
       navigation("/dashboard");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const getTicket = (id) => {
+  return async (dispatch) => {
+    try {
+      const res = await API.get(`/api/getTicket/${id}`);
+      dispatch(ticketActions.setData(res.data));
     } catch (err) {
       console.log(err);
     }

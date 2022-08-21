@@ -4,6 +4,7 @@ import { QrReader } from "react-qr-reader";
 import "../styles/dashboard.css";
 function Dashboard() {
   const [data, setData] = useState("No result");
+  const [isScanning, setIsScanning] = useState(true);
   const previewStyle = {
     height: 240,
     width: 320,
@@ -17,7 +18,7 @@ function Dashboard() {
   }
   return (
     <div className="dashboard-cont">
-      <div>Dashboard</div>
+      <h1>Scan QR</h1>
       <div className="qr-cont">
         <QrReader
           style={previewStyle}
@@ -25,9 +26,10 @@ function Dashboard() {
           onResult={(result, error) => {
             if (!!result) {
               setData(result?.text);
+              setIsScanning(false);
               const a = document.createElement("a");
               a.href = result?.text;
-              a.target = "_blank";
+              // a.target = "_blank";
               a.click();
             }
 
@@ -37,6 +39,7 @@ function Dashboard() {
           }}
         />
       </div>
+      <div>{isScanning ? "Scanning..." : "error"}</div>
     </div>
   );
 }

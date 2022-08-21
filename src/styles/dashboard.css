@@ -1,3 +1,7 @@
+.dashboard-cont {
+  margin-top: 1rem;
+  padding: 1rem;
+}
 .qr-cont {
-  width: 360px;
+  padding: 1rem;
 }
