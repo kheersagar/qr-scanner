@@ -29,7 +29,7 @@ function Dashboard() {
               setIsScanning(false);
               const a = document.createElement("a");
               a.href = result?.text;
-              // a.target = "_blank";
+              a.target = "_blank";
               a.click();
             }
 
