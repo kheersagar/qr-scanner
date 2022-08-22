@@ -11,12 +11,15 @@ import TicketDetails from "./pages/TicketDetails";
 import Header from "./components/Header";
 import QrScan from "./pages/QrScan";
 import Check from "./pages/Check";
+import UnProtectedRoutes from "./components/UnprotectedRoute";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route element={<UnProtectedRoutes />}>
+          <Route path="/" element={<Login />} />
+        </Route>
         <Route element={<ProtectedRoutes />}>
           <Route element={<Header />}>
             <Route path="/dashboard" element={<Dashboard />} />
