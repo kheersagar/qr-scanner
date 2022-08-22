@@ -8,28 +8,26 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import TicketDetails from "./pages/TicketDetails";
+import Header from "./components/Header";
+import QrScan from "./pages/QrScan";
+import Check from "./pages/Check";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoutes>
-              <Dashboard />
-            </ProtectedRoutes>
-          }
-        />
-        <Route
-          path="/getTicketDetails/:id"
-          element={
-            <ProtectedRoutes>
-              <TicketDetails />
-            </ProtectedRoutes>
-          }
-        ></Route>
+        <Route element={<ProtectedRoutes />}>
+          <Route element={<Header />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route
+              path="/getTicketDetails/:id"
+              element={<TicketDetails />}
+            ></Route>
+            <Route path="/scan-qr" element={<QrScan />}></Route>
+            <Route path="/check-number" element={<Check />}></Route>
+          </Route>
+        </Route>
       </Routes>
     </div>
   );

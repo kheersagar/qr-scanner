@@ -35,3 +35,14 @@ export const getTicket = (id) => {
     }
   };
 };
+
+export const getTicketById = (id) => {
+  return async (dispatch) => {
+    try {
+      const res = await API.get(`/api/getTicketById/${id}`);
+      dispatch(ticketActions.setData(res.data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};

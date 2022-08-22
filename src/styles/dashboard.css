@@ -1,7 +1,34 @@
+.dashboard-container {
+  margin-top: 1rem;
+  padding: 1rem;
+}
 .dashboard-cont {
   margin-top: 1rem;
   padding: 1rem;
 }
 .qr-cont {
   padding: 1rem;
+}
+.options-row {
+  display: flex;
+  flex-direction: column;
+}
+.options {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3f51b5;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 1rem 0;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.input-sec {
+  margin-top: 1rem;
+  padding: 0 1rem;
 }

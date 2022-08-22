@@ -1,18 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getTicket } from "../API/API";
+import { getTicket, getTicketById } from "../API/API";
 import { useDispatch, useSelector } from "react-redux";
+import "../styles/dashboard.css";
 
-import "../styles/TicketDetails.css";
-function TicketDetails() {
+import { Button } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
+
+function Check() {
   const { data } = useSelector((state) => state.ticket);
-  const { id } = useParams();
+  const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTicket(id));
-  }, []);
+  const searchHandler = () => {
+    dispatch(getTicketById(inputValue));
+  };
   return (
     <div>
+      <div className="input-sec">
+        <InputGroup className="mb-3">
+          <Form.Control
+            placeholder="Ticket Id"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+            required
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <Button
+            variant="outline-secondary"
+            id="button-addon2"
+            onClick={searchHandler}
+          >
+            Button
+          </Button>
+        </InputGroup>
+      </div>
       <div className="user-detail-cont">
         <h1>{data?.monumentId?.name}</h1>
         {data.length !== 0 ? (
@@ -47,4 +69,4 @@ function TicketDetails() {
   );
 }
 
-export default TicketDetails;
+export default Check;
