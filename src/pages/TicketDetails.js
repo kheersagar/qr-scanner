@@ -24,7 +24,7 @@ function TicketDetails() {
                     src={
                       process.env.NODE_ENV === "development"
                         ? `http://localhost:8000/${data.monumentId?.img}`
-                        : `https://sih11.herokuapp.com/${data.monumentId?.img}`
+                        : `https://ticket-backend-nur5.onrender.com/${data.monumentId?.img}`
                     }
                     className="ticket-verif-image"
                   />
