@@ -5,7 +5,7 @@ const API = axios.create({
   baseURL:
     process.env.NODE_ENV === "development"
       ? "http://localhost:8000"
-      : "https://sih11.herokuapp.com/",
+      : "https://ticket-backend-nur5.onrender.com",
 });
 
 API.interceptors.request.use((req) => {
